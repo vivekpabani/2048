@@ -4,6 +4,7 @@
 To Run: ./game.py
 
 Rules:
+
 1. Enter U, D, L or R for Moving Up, Down, Left, Right
 
 2. Enter Q to quit.
