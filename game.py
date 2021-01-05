@@ -26,12 +26,12 @@ def update_matrix(matrix, direction, length, score):
 
     rotate_data = dir_dict[direction]
 
-    for i in xrange(rotate_data[0]):
+    for i in range(rotate_data[0]):
         matrix = rotate_matrix(matrix, length)
 
     matrix, updated, score = move(matrix, length, score)
 
-    for j in xrange(rotate_data[1]):
+    for j in range(rotate_data[1]):
         matrix = rotate_matrix(matrix, length)
 
     return matrix, updated, score
@@ -39,10 +39,10 @@ def update_matrix(matrix, direction, length, score):
 
 def rotate_matrix(matrix, length):
 
-    new_matrix = [[0 for i in xrange(length)] for j in xrange(length)]
+    new_matrix = [[0 for i in range(length)] for j in range(length)]
 
-    for i in xrange(length):
-        for j in xrange(length):
+    for i in range(length):
+        for j in range(length):
             new_matrix[i][j] = matrix[length - j - 1][i]
 
     return new_matrix
@@ -52,7 +52,7 @@ def move(matrix, length, score):
 
     updated = 0
 
-    for i in xrange(0, length):
+    for i in range(0, length):
         stop = -1
         current = 1
 
@@ -90,27 +90,27 @@ def print_matrix(matrix):
     lines = ['-'*(i + 2) + '-' for i in col_width]
     dash_line = ''.join(lines)
 
-    print dash_line
+    print(dash_line)
 
     for index, line in enumerate(matrix):
         table_row = ""
         for i, x in enumerate(line):
             table_row += "{:{}}".format(x, col_width[i]) + " | "
 
-        print "| " + table_row
+        print("| " + table_row)
 
-        print dash_line
+        print(dash_line)
 
 
 def initiate_matrix(length):
 
-    matrix = [[0 for i in xrange(length)] for j in xrange(length)]
+    matrix = [[0 for i in range(length)] for j in range(length)]
 
     choice_list = [2, 4]
 
-    for k in xrange(2):
-        i = random.choice(xrange(length))
-        j = random.choice(xrange(length))
+    for k in range(2):
+        i = random.choice(range(length))
+        j = random.choice(range(length))
         matrix[i][j] = random.choice(choice_list)
 
     return matrix
@@ -122,8 +122,8 @@ def fill_in_matrix(matrix, length):
 
     while found == 0:
 
-        i = random.choice(xrange(length))
-        j = random.choice(xrange(length))
+        i = random.choice(range(length))
+        j = random.choice(range(length))
 
         if matrix[i][j] == 0:
             matrix[i][j] = 2
@@ -143,11 +143,11 @@ def main():
 
     while True:
 
-        print "\nScore: ", score
+        print("\nScore: ", score)
 
         print_matrix(matrix)
 
-        ch = raw_input("Enter Choice [U, D, L, R]:  ")
+        ch = input("Enter Choice [U, D, L, R]:  ")
 
         if ch in quit_list:
             break
@@ -157,12 +157,12 @@ def main():
             if updated:
                 matrix = fill_in_matrix(matrix, length)
             else:
-                print "No Update."
+                print("No Update.")
         except KeyError:
-            print "Please Choose From Given Options [U, D, L, R]."
+            print("Please Choose From Given Options [U, D, L, R].")
 
-    print "Final Score: ", score
-    print "Good Bye!"
+    print("Final Score: ", score)
+    print("Good Bye!")
 
 
 if __name__ == '__main__':
